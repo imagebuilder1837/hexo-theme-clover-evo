@@ -1,6 +1,6 @@
 # Clover Evo
 
-一个基于 [上游 Clover](https://github.com/esappear/hexo-theme-clover)、独立演进的 Hexo 衍生主题。
+一个基于 [Clover](https://github.com/esappear/hexo-theme-clover) 独立演进的 Hexo 主题。
 
 ## 使用实例
 
@@ -13,7 +13,7 @@
 1. 安装主题：
 
    ```sh
-   git clone --branch main https://github.com/imagebuilder1837/hexo-theme-clover-evo.git themes/clover-evo
+   git clone https://github.com/imagebuilder1837/hexo-theme-clover-evo.git themes/clover-evo
    ```
 
 2. 检查站点依赖，补齐缺少的包：
