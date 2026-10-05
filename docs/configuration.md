@@ -1,6 +1,6 @@
 # 配置指南
 
-[返回 README](../readme.md) · [内容指南](content.md)
+[返回 README](../README.md) · [内容指南](content.md)
 
 以下片段均合并进站点 `_config.yml`。主题可用选项见[默认配置](../_config.yml)，通用站点配置见 [Hexo 文档](https://hexo.io/zh-cn/docs/configuration)。
 
@@ -13,7 +13,7 @@ title: 我的博客
 url: https://example.com
 language: zh-CN
 author: 我的名字
-theme: clover
+theme: clover-evo
 theme_config:
   nav:
     title: 我的博客

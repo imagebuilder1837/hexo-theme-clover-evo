@@ -4,8 +4,10 @@ const metadata = require('./lib/metadata');
 
 function pageTitle(context, fallback = context.config.title) {
   let title;
-  if (context.is_archive()) {
-    title = `${context.__('archive_a')}${context.page.year ? ': ' + context.page.year + (context.page.month ? '/' + context.page.month : '') : ''}`;
+  if (context.is_home() && context.page.current > 1) {
+    title = context.__('page', context.page.current);
+  } else if (context.is_archive()) {
+    title = `${context.__('archive')}${context.page.year ? ': ' + context.page.year + (context.page.month ? '/' + context.page.month : '') : ''}`;
   } else if (context.is_category()) {
     title = `${context.__('category')}: ${context.page.category}`;
   } else if (context.is_tag()) {

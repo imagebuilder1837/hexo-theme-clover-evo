@@ -3,7 +3,7 @@
 const compare = (a, b) => a > b ? 1 : a < b ? -1 : 0;
 
 hexo.extend.helper.register('clover_browse_groups', function (kind) {
-  if (!['archive', 'category'].includes(kind)) throw new Error(`Unsupported Clover browsing page: ${kind}`);
+  if (!['archive', 'category'].includes(kind)) throw new Error(`Unsupported Clover Evo browsing page: ${kind}`);
   const archive = kind === 'archive';
   const posts = archive ? this.page.posts.data : this.site.posts.data;
   const uncategorized = Symbol('uncategorized');

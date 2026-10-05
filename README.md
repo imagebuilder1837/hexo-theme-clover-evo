@@ -1,6 +1,6 @@
-# Clover
+# Clover Evo
 
-一个 Hexo 主题，本项目是 [上游 Clover](https://github.com/esappear/hexo-theme-clover) 的 fork，包含自定义调整。
+一个基于 [上游 Clover](https://github.com/esappear/hexo-theme-clover)、独立演进的 Hexo 衍生主题。
 
 ## 使用实例
 
@@ -13,7 +13,7 @@
 1. 安装主题：
 
    ```sh
-   git clone --branch main https://github.com/imagebuilder1837/hexo-theme-clover.git themes/clover
+   git clone --branch main https://github.com/imagebuilder1837/hexo-theme-clover-evo.git themes/clover-evo
    ```
 
 2. 检查站点依赖，补齐缺少的包：
@@ -28,7 +28,7 @@
    npm install --save image-size parse5 hexo-front-matter hexo-util
    ```
 
-3. 在站点 `_config.yml` 设置 `theme: clover`。站点标题、URL、作者和语言写在顶层；主题导航、社交链接等写在 `theme_config`。安装后应替换或清空示例身份与链接，具体见[配置指南](docs/configuration.md)。
+3. 在站点 `_config.yml` 设置 `theme: clover-evo`。站点标题、URL、作者和语言写在顶层；主题导航、社交链接等写在 `theme_config`。安装后应替换或清空示例身份与链接，具体见[配置指南](docs/configuration.md)。
 
 4. 生成站点：
 

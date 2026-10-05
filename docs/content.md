@@ -1,6 +1,6 @@
 # 内容指南
 
-[返回 README](../readme.md) · [配置指南](configuration.md)
+[返回 README](../README.md) · [配置指南](configuration.md)
 
 这里只说明会影响内容呈现、署名和订阅结果的约定。Front matter 的通用写法见 [Hexo 文档](https://hexo.io/zh-cn/docs/front-matter)。
 

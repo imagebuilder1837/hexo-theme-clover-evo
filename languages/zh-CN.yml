@@ -1,9 +1,8 @@
-categories: 分类
-tags: 标签
-about: 关于
-archive_a: 归档
-archive_b: 归档：%s
 page: 第 %d 页
+archive: 归档
+categories: 分类
 category: 分类
-tag: 标签
 other_category: 其他
+tags: 标签
+tag: 标签
+about: 关于

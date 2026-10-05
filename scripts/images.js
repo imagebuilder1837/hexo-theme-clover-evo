@@ -10,7 +10,7 @@ const diagnosed = new Set();
 function diagnose(src, reason) {
   if (diagnosed.has(src)) return;
   diagnosed.add(src);
-  hexo.log.warn(`Clover image ${src}: ${reason}; intrinsic dimensions not added`);
+  hexo.log.warn(`Clover Evo image ${src}: ${reason}; intrinsic dimensions not added`);
 }
 
 // Only local source assets are inspected. URL resolution supports site roots

@@ -1,9 +1,8 @@
-categories: Categories
-tags: Tags
-about: About
-archive_a: Archives
-archive_b: "Archives: %s"
 page: Page %d
+archive: Archives
+categories: Categories
 category: Category
-tag: Tag
 other_category: Others
+tags: Tags
+tag: Tag
+about: About
