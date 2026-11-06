@@ -144,7 +144,6 @@ body[data-layout="about"] .article {
       white-space: pre;
       overflow-wrap: normal;
       min-width: max-content;
-      max-width: none;
       box-sizing: border-box;
     }
     pre {
@@ -278,14 +277,6 @@ body[data-layout="about"] .article {
       td { border-bottom-width: 1px; }
     }
     
-    * {
-      max-width: 100%;
-    }
-
-    // Preserve readable math sizing; MathJax's display container handles scrolling.
-    mjx-container[jax="SVG"][display="true"] > svg {
-      max-width: none;
-    }
   }
   > footer {
     padding: 40px 0 0;
