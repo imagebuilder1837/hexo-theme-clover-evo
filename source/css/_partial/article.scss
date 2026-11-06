@@ -119,6 +119,9 @@ body[data-layout="about"] .article {
     }
     a {
       color: $brand-color;
+      &:hover {
+        color: rgba($brand-color, 0.7);
+      }
     }
 
     strong {
@@ -291,6 +294,7 @@ body[data-layout="about"] .article {
       font-size: 16px;
       line-height: 22px;
       max-width: 50%;
+      &:hover { opacity: .7; }
     }
   }
   @media screen and (max-width: 600px) {

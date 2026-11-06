@@ -1,5 +1,6 @@
 #nav {
   margin-bottom: 48px;
+  a:hover { opacity: .7; }
   > .header {
     margin-bottom: 10px;
     // Match the inline title's metrics so font loading cannot resize its line box.
@@ -8,9 +9,6 @@
     font-family: ThisJuly;
     > .title {
       color: #333;
-      &:hover {
-        opacity: .7;
-      }
     }
   }
   > .ctnWrap {

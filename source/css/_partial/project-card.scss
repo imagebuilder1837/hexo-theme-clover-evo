@@ -38,7 +38,6 @@ body[data-layout="home"] .project-card > .ctnWrap > :last-child {
       font-size: 28px;
       line-height: 40px;
       &:hover {
-        opacity: 1;
         color: #f0534e;
       }
     }
@@ -47,6 +46,7 @@ body[data-layout="home"] .project-card > .ctnWrap > :last-child {
       line-height: 30px;
       margin-top: 20px;
       margin-bottom: 15px;
+      a:hover { opacity: .7; }
     }
     > .sub {
       font-size: 16px;
