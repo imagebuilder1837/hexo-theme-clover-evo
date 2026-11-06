@@ -2,6 +2,14 @@
 
 $brand-color: #f0534e;
 
+// Keep local CJK faces from supplying proportional Latin glyphs in code.
+@font-face {
+  font-family: 'Clover Code CJK';
+  src: local('Noto Sans CJK SC'), local('Noto Sans SC'), local('Source Han Sans SC'),
+       local('PingFang SC'), local('Microsoft YaHei'), local('WenQuanYi Micro Hei');
+  unicode-range: U+2E80-9FFF, U+F900-FAFF, U+FE10-FE1F, U+FE30-FE4F, U+FF00-FFEF, U+20000-323AF;
+}
+
 // Posts keep a distinct ending rhythm; standalone pages use their outer inset.
 .article.article-post > .content { padding-bottom: 32px; }
 .article:not(.article-post) > .content > :last-child { margin-bottom: 0; }
@@ -70,18 +78,22 @@ body[data-layout="about"] .article {
     }
 
     code {
-      font-size: 13px;
-      line-height: 20px;
+      font-family: 'Clover Code CJK', ui-monospace, SFMono-Regular, 'SF Mono', Menlo,
+                   Consolas, 'Liberation Mono', monospace;
+      font-size: 14px;
+      line-height: 1.5;
     }
 
     pre, .highlight {
       overflow: visible;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
+      white-space: pre;
+      overflow-wrap: normal;
       padding: 0;
       color: #333;
-      font-size: 13px;
-      background: #f8f8f8;
+      font-size: 14px;
+      line-height: 1.5;
+      background: #f6f8fa;
+      border-radius: 6px;
       .gutter {
         text-align: right;
         pre {
@@ -125,14 +137,24 @@ body[data-layout="about"] .article {
     // Hexo's unwrapped build highlight has literal newlines and no gutter.
     pre > code {
       display: block;
-      padding: 12px 16px;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-      max-width: 100%;
+      padding: 16px;
+      white-space: pre;
+      overflow-wrap: normal;
+      min-width: max-content;
+      max-width: none;
       box-sizing: border-box;
     }
     pre {
       margin-bottom: 15px;
+      overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: #8c8c8c transparent;
+      &:hover, &:focus-visible { scrollbar-color: #6e7781 transparent; }
+      &:focus-visible { outline: 2px solid #0550ae; outline-offset: -2px; }
+      @media (forced-colors: active) {
+        scrollbar-width: auto;
+        scrollbar-color: auto;
+      }
     }
     .hljs-comment, .hljs-quote { color: #57606a; }
     .hljs-keyword, .hljs-selector-tag, .hljs-literal { color: #a31515; }
@@ -150,8 +172,9 @@ body[data-layout="about"] .article {
       position: relative;
       margin-bottom: 15px;
       // The floating control may overlap code; do not reserve a toolbar row.
-      padding: 28px 6px;
-      background: #f8f8f8;
+      padding: 28px 0 16px;
+      background: #f6f8fa;
+      border-radius: 6px;
       > pre {
         margin: 0;
         > code { padding: 0 16px; }
@@ -211,13 +234,13 @@ body[data-layout="about"] .article {
 
     // Tight lists and other inline contexts may have no <p>; exclude all pre descendants.
     code:not(pre code) {
-      padding: 2px 4px;
+      padding: 0.15em 0.35em;
       overflow-wrap: anywhere;
-      color: #555;
-      background: #eee;
-      border-radius: 3px;
-      font-size: 0.8125em;
-      line-height: inherit;
+      color: inherit;
+      background: rgba(129, 139, 152, 0.12);
+      border-radius: 4px;
+      font-size: 0.875em;
+      line-height: normal;
     }
 
     table {

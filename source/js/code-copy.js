@@ -13,6 +13,8 @@
     wrapper.className = 'code-block';
     pre.parentNode.insertBefore(wrapper, pre);
     wrapper.appendChild(pre);
+    // Some browsers do not make scroll containers keyboard-focusable by default.
+    pre.tabIndex = 0;
     var toolbar = document.createElement('div');
     toolbar.className = 'code-toolbar';
     var button = document.createElement('button');
