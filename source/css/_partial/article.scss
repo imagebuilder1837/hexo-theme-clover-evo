@@ -173,13 +173,12 @@ body[data-layout="about"] .article {
     .code-block {
       position: relative;
       margin-bottom: 15px;
-      // The floating control may overlap code; do not reserve a toolbar row.
-      padding: 28px 0 16px;
       background: #f6f8fa;
       border-radius: 6px;
       > pre {
         margin: 0;
-        > code { padding: 0 16px; }
+        // Keep text spacing inside the scroller; do not reserve a toolbar row.
+        > code { padding: 28px 16px 16px; }
       }
     }
     .code-toolbar {
