@@ -7,6 +7,6 @@
   <div class="ctnWrap">
     <a href="<%- url_for(post.path) %>" class="title"><%= clover_title(post.title) %></a>
     <section class="desc"><%- partial('excerpt', { post: post }) %></section>
-    <p class="sub"><%- date(post.date, 'MMM D, YYYY') %></p>
+    <p class="sub"><%- partial('post-date', { post: post }) %></p>
   </div>
 </div>

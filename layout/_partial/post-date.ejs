@@ -1,0 +1,7 @@
+<% const published = date(post.date, 'YYYY-MM-DD'); %>
+<% const updated = post.updated && date(post.updated, 'YYYY-MM-DD'); %>
+<% if (updated && updated > published) { %>
+  <span title="发布时间"><%= published %></span>&ensp;→&ensp;<span title="最后更新时间"><%= updated %></span>
+<% } else { %>
+  <span title="发布时间"><%= published %></span>
+<% } %>

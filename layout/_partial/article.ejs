@@ -3,7 +3,7 @@
     <img class="cover" src="<%= url_for(post.photos[0]) %>" alt="" <%- clover_card_image_attrs(post.photos[0]) %> loading="eager" />
   <% } %>
   <h1 class="title"><%= clover_title(post.title) %></h1>
-  <p class="sub"><%- date(post.date, 'MMM D, YYYY') %></p>
+  <p class="sub"><%- partial('post-date', { post: post }) %></p>
   <article class="content">
     <%- clover_body_images(post.more, post.path) %>
   </article>
