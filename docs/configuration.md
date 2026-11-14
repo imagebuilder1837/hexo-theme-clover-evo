@@ -27,7 +27,7 @@ theme_config:
 
 子路径部署时，`url` 应包含子路径，`root` 与其一致。`favicon` 和 `background.image` 的本地地址按站点 root 解析，完整外部 URL 保持外部地址。
 
-Hexo 会深合并配置中的映射。例如，只新增一个社交链接不会删除默认的 GitHub 链接；只新增菜单也不会删除默认的 Tag、About。要隐藏继承的条目，将对应值设为空：
+Hexo 会深合并配置中的映射。例如，新增社交链接或菜单后，默认的 GitHub、Tag、About 条目仍会保留。要隐藏继承的条目，将对应值设为空：
 
 ```yaml
 theme_config:
@@ -37,9 +37,9 @@ theme_config:
     About: ''
 ```
 
-社交链接与菜单分别优先按站点 `theme_config.social`、`theme_config.menu` 的声明顺序显示，未声明的默认条目追加在末尾。排序不再使用单独的 `social_order` 配置；旧配置需将顺序移到 `social` 条目的排列中。
+社交链接与菜单分别优先按站点 `theme_config.social`、`theme_config.menu` 的声明顺序显示，继承的默认条目追加在末尾。
 
-菜单值支持路径字符串或含 `path` 的对象，不支持逐菜单的 `card` 选项。首页及其分页都标记首页菜单为当前位置。列表样式由 `theme_config.card_style` 的 `home`、`category`、`tag` 控制，支持 `project-card` 和 `article-card`。归档总页使用分组列表；年份和月份详情固定使用 `article-card`，不读取遗留的 `card_style.archive`。
+菜单值支持路径字符串或含 `path` 的对象。首页及其分页都标记首页菜单为当前位置。列表样式由 `theme_config.card_style` 的 `home`、`category`、`tag` 控制，支持 `project-card` 和 `article-card`。归档总页使用分组列表；年份和月份详情固定使用 `article-card`。
 
 ## 分类与标签总览
 
@@ -76,13 +76,11 @@ tag_generator:
 
 使用源页面作为标签总览时，不要同时开启标签生成器的 `enable_index_page`，否则两者会占用同一路由。修改 `category_dir` 或 `tag_dir` 时，源页面目录和菜单路径也应一起修改。
 
-分类总览按文章的第一分类分组，包含未分类文章；多级分类不会让同一篇文章在每组重复出现。分类标题链接到对应分类页；未分类组或合并了多个同名分类的组保留纯文字标题。分类总览完整列出文章，不分页；标签总览显示标签云。
-
-从上游迁移时，`category_generator.path` 不再用于创建分类总览；原有 `theme_config.home` 首页包含/排除筛选也不再支持。
+分类总览按文章的第一分类分组，包含未分类文章。分类标题链接到对应分类页；未分类组或合并了多个同名分类的组保留纯文字标题。分类总览完整列出文章；标签总览显示标签云。
 
 ## 归档
 
-归档总页按年份倒序分组，年份标题链接到对应年份页。月份页面与总页中的月份分组共同遵循站点级 `archive_generator.monthly`；主题不另设月份开关。开启时，年份下增加按月份倒序排列的分组，月份名称跟随站点语言，小标题链接到月份页。年份和月份详情均显示文章卡片。
+归档总页按年份倒序分组，年份标题链接到对应年份页。月份页面与总页中的月份分组共同遵循站点级 `archive_generator.monthly`。开启时，年份下增加按月份倒序排列的分组，月份名称跟随站点语言，小标题链接到月份页。年份和月份详情均显示文章卡片。
 
 `hexo-generator-archive` 默认开启年份和月份归档。只需要年份归档时，在站点 `_config.yml` 中设置：
 
@@ -92,11 +90,11 @@ archive_generator:
   monthly: false
 ```
 
-改为 `monthly: true` 即开启月份归档；年份归档需保持启用。关闭月份后，使用干净构建移除旧的月份产物；旧月份地址不会自动跳转。
+改为 `monthly: true` 即开启月份归档；年份归档需保持启用。关闭月份后，使用干净构建移除旧的月份产物；需要保留旧月份地址时，另行配置跳转。
 
 ## 分页
 
-各标准生成器默认继承全局 `per_page`。需要首页分页、其他列表完整展示时，分别设置生成器选项，而不是只改全局值：
+各标准生成器默认继承全局 `per_page`。需要首页分页、其他列表完整展示时，分别设置生成器选项：
 
 ```yaml
 per_page: 10
@@ -111,11 +109,11 @@ tag_generator:
   enable_index_page: false
 ```
 
-这里的首页条数仅为示例；`0` 表示不分页。以上选项影响标准列表路由，不改变源页面分类总览的行为。
+这里的首页条数仅为示例；`0` 表示不分页。以上选项控制标准列表路由；源页面分类总览始终完整展示。
 
 ## Sass
 
-主题使用 Dart Sass，不要同时安装旧 Sass 渲染器与 `hexo-renderer-dartsass`。从旧渲染器迁移时，用 `sass.style` 替代 `node_sass.outputStyle`。
+主题使用 Dart Sass，通过站点的 `sass` 配置设置渲染选项。
 
 例如压缩 CSS 输出：
 

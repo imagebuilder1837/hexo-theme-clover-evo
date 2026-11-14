@@ -17,10 +17,7 @@ function diagnose(src, reason) {
 // and relative article paths, without treating remote URLs as filesystem paths.
 function dimensions(src, pagePath = '') {
   if (!src) return null;
-  if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(src)) {
-    diagnose(src, 'not a local source asset');
-    return null;
-  }
+  if (/^(?:[a-z][a-z\d+.-]*:|\/\/)/i.test(src)) return null;
   let filename;
   try {
     const root = '/' + (hexo.config.root || '/').replace(/^\/+|\/+$/g, '');

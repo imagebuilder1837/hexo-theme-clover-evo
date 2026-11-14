@@ -20,6 +20,7 @@ function pageTitle(context, fallback = context.config.title) {
 }
 
 hexo.extend.helper.register('clover_title', metadata.plain);
+hexo.extend.helper.register('clover_post_dates', metadata.dates);
 hexo.extend.helper.register('clover_page_title', function (fallback) {
   return pageTitle(this, fallback);
 });
@@ -40,8 +41,7 @@ hexo.extend.helper.register('clover_metadata_html', function (data) {
 // Theme scripts alone do not enable a feed: hexo-generator-feed remains optional.
 hexo.extend.filter.register('before_generate', function () {
   for (const post of hexo.locals.get('posts').toArray()) {
-    metadata.author(post, hexo.config);
-    metadata.language(post, hexo.config);
+    metadata.resolve(post, hexo.config, true);
   }
   metadata.language({}, hexo.config);
   if (hexo.config.feed && hexo.config.feed.enable !== false && hexo.extend.generator.get('atom')) {

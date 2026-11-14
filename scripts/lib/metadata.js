@@ -66,13 +66,51 @@ function absolute(value, config) {
 
 function images(page, config) {
   const values = Array.isArray(page.photos) ? page.photos : page.photos ? [page.photos] : [];
-  return values.map(value => absolute(value, config)).filter(Boolean);
+  return values.map((value, index) => {
+    try {
+      return absolute(value, config);
+    } catch (error) {
+      throw new Error(`${page.source || page.path || page.title}: photos[${index}]: ${error.message}`, { cause: error });
+    }
+  }).filter(Boolean);
+}
+
+function source(page, config) {
+  const value = page.source_url;
+  if (value === undefined || value === null || value === '') return undefined;
+  try {
+    const url = absolute(value, config);
+    if (typeof value !== 'string' || (value.trim() && !url)) {
+      throw new Error('expected an HTTP(S) or relative URL');
+    }
+    return url;
+  } catch (error) {
+    throw new Error(`${page.source || page.path || page.title}: source_url: ${error.message}`, { cause: error });
+  }
 }
 
 function iso(value) {
   if (!value) return undefined;
   const date = typeof value.toDate === 'function' ? value.toDate() : new Date(value);
   return Number.isNaN(date.valueOf()) ? undefined : date.toISOString();
+}
+
+// Hexo has already applied timezone handling and may have filled missing dates.
+// Validate the recorded declaration, then keep Hexo's processed time for output.
+function dates(page) {
+  const recorded = page.raw ? parse(page.raw) : {};
+  for (const field of ['date', 'updated']) {
+    const value = recorded[field];
+    if (value === undefined || value === null || value === '') continue;
+    if (!iso(value)) {
+      throw new Error(`${page.source || page.path || page.title}: ${field} must be a valid date`);
+    }
+  }
+  return {
+    published: iso(page.date),
+    modified: recorded.updated === undefined || recorded.updated === null || recorded.updated === ''
+      ? undefined : iso(page.updated)
+  };
 }
 
 function resolve(page, config, article) {
@@ -84,11 +122,8 @@ function resolve(page, config, article) {
     language: language(page, config),
     author: article ? author(page, config) : undefined,
     images: images(page, config),
-    published: article ? iso(page.date) : undefined,
-    // Hexo may populate updated from mtime or publication date. Only an
-    // explicitly recorded revision belongs in public modification metadata.
-    modified: article && page.raw && parse(page.raw).updated ? iso(page.updated) : undefined,
-    source: article ? absolute(page.source_url, config) : undefined
+    ...(article ? dates(page) : {}),
+    source: article ? source(page, config) : undefined
   };
 }
 
@@ -136,4 +171,4 @@ function html(data, config, article, theme = {}) {
   return tags.join('\n');
 }
 
-module.exports = { plain, summary, author, language, canonical, absolute, images, iso, resolve, html };
+module.exports = { plain, summary, author, language, canonical, absolute, images, iso, dates, resolve, html };

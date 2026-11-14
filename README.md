@@ -18,9 +18,9 @@
 
 2. 检查站点依赖，补齐缺少的包：
 
-   - 渲染器：`hexo-renderer-ejs`、Markdown 渲染器（例如 `hexo-renderer-marked`）、`hexo-renderer-dartsass`。不要同时安装两套 Sass 渲染器，迁移配置见[配置指南](docs/configuration.md)。
+   - 渲染器：`hexo-renderer-ejs`、Markdown 渲染器（例如 `hexo-renderer-marked`）、`hexo-renderer-dartsass`。不要同时安装两套 Sass 渲染器，选项见[配置指南](docs/configuration.md)。
    - 标准列表生成器：`hexo-generator-index`、`hexo-generator-archive`、`hexo-generator-category`、`hexo-generator-tag`。
-   - 主题脚本依赖：`image-size`、`parse5`、`hexo-front-matter`、`hexo-util`。直接声明在站点依赖中，克隆主题不会自动安装这些包。
+   - 主题脚本依赖：`image-size`、`parse5`、`hexo-front-matter`、`hexo-util`。这些包由站点直接安装和声明。
 
    例如补齐主题脚本依赖：
 
