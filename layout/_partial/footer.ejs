@@ -1,7 +1,6 @@
 <footer id="footer" class="f-cf">
-  <a href="mailto:<%= theme.mail %>" target="_blank"><%= theme.mail %></a>
-  <% social_links().forEach(function(item) { %>
-    · <a href="<%= url_for(item.url) %>" target="_blank" class="nav-icn"><%= item.key %></a>
+  <% social_links().forEach(function(item, index) { %>
+    <% if (index > 0) { %>· <% } %><a href="<%= url_for(item.url) %>" target="_blank" class="nav-icn"><%= item.key %></a>
   <% }); %>
   <span class="copyright"><%- theme.copyright %></span>
 </footer>

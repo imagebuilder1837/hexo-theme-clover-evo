@@ -17,13 +17,13 @@ theme: clover-evo
 theme_config:
   nav:
     title: 我的博客
-  mail: me@example.com
   copyright: 我的版权说明
   social:
     GitHub: https://github.com/your-name
+    Mail: mailto:me@example.com
 ```
 
-`title` 是站点标题，`theme_config.nav.title` 是主题导航标题。主题默认值中的邮箱、版权文字和社交链接只是示例，应替换或清空。
+`title` 是站点标题，`theme_config.nav.title` 是主题导航标题。主题默认值中的版权文字和社交链接只是示例，应替换或清空。
 
 子路径部署时，`url` 应包含子路径，`root` 与其一致。`favicon` 和 `background.image` 的本地地址按站点 root 解析，完整外部 URL 保持外部地址。
 
@@ -37,7 +37,7 @@ theme_config:
     About: ''
 ```
 
-社交链接与菜单分别优先按站点 `theme_config.social`、`theme_config.menu` 的声明顺序显示，继承的默认条目追加在末尾。
+社交链接与菜单分别优先按站点 `theme_config.social`、`theme_config.menu` 的声明顺序显示，继承的默认条目追加在末尾。邮箱使用 `social.Mail` 配置完整的 `mailto:` 链接，与其他社交入口共同排序。
 
 菜单值支持路径字符串或含 `path` 的对象。首页及其分页都标记首页菜单为当前位置。列表样式由 `theme_config.card_style` 的 `home`、`category`、`tag` 控制，支持 `project-card` 和 `article-card`。归档总页使用分组列表；年份和月份详情固定使用 `article-card`。
 
