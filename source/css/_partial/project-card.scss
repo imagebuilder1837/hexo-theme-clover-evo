@@ -1,8 +1,8 @@
 @use '../layout';
 @use '../colors';
 
-// Taxonomy lists share the overview pages' insets; home cards remain denser.
-body[data-layout="category"], body[data-layout="tag"] {
+// Collection lists share the overview pages' insets; home cards remain denser.
+body[data-layout="category"], body[data-layout="tag"], body[data-layout="archive"] {
   .project-card { padding: 64px layout.$overview-inset; }
   .project-card-continuous::after { left: layout.$overview-inset; right: layout.$overview-inset; }
   @media screen and (max-width: 600px) {

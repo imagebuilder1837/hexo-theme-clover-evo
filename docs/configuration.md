@@ -39,7 +39,7 @@ theme_config:
 
 社交链接与菜单分别优先按站点 `theme_config.social`、`theme_config.menu` 的声明顺序显示，未声明的默认条目追加在末尾。排序不再使用单独的 `social_order` 配置；旧配置需将顺序移到 `social` 条目的排列中。
 
-菜单值支持路径字符串或含 `path` 的对象，不支持逐菜单的 `card` 选项。列表样式由 `theme_config.card_style` 的 `home`、`category`、`tag` 控制，支持 `project-card` 和 `article-card`。归档使用分组列表；遗留 `card_style.archive` 不生效。
+菜单值支持路径字符串或含 `path` 的对象，不支持逐菜单的 `card` 选项。首页及其分页都标记首页菜单为当前位置。列表样式由 `theme_config.card_style` 的 `home`、`category`、`tag` 控制，支持 `project-card` 和 `article-card`。归档总页使用分组列表；年份和月份详情固定使用 `article-card`，不读取遗留的 `card_style.archive`。
 
 ## 分类与标签总览
 
@@ -76,9 +76,23 @@ tag_generator:
 
 使用源页面作为标签总览时，不要同时开启标签生成器的 `enable_index_page`，否则两者会占用同一路由。修改 `category_dir` 或 `tag_dir` 时，源页面目录和菜单路径也应一起修改。
 
-分类总览按文章的第一分类分组，包含未分类文章；多级分类不会让同一篇文章在每组重复出现。分类总览完整列出文章，不分页；标签总览显示标签云。
+分类总览按文章的第一分类分组，包含未分类文章；多级分类不会让同一篇文章在每组重复出现。分类标题链接到对应分类页；未分类组或合并了多个同名分类的组保留纯文字标题。分类总览完整列出文章，不分页；标签总览显示标签云。
 
 从上游迁移时，`category_generator.path` 不再用于创建分类总览；原有 `theme_config.home` 首页包含/排除筛选也不再支持。
+
+## 归档
+
+归档总页按年份倒序分组，年份标题链接到对应年份页。月份页面与总页中的月份分组共同遵循站点级 `archive_generator.monthly`；主题不另设月份开关。开启时，年份下增加按月份倒序排列的分组，月份名称跟随站点语言，小标题链接到月份页。年份和月份详情均显示文章卡片。
+
+`hexo-generator-archive` 默认开启年份和月份归档。只需要年份归档时，在站点 `_config.yml` 中设置：
+
+```yaml
+archive_generator:
+  per_page: 0
+  monthly: false
+```
+
+改为 `monthly: true` 即开启月份归档；年份归档需保持启用。关闭月份后，使用干净构建移除旧的月份产物；旧月份地址不会自动跳转。
 
 ## 分页
 

@@ -15,6 +15,16 @@
     font-size: 28px;
     line-height: 40px;
     font-weight: 600;
+    > a:hover, > a:focus-visible { color: colors.$brand-color; }
+  }
+  > .archive-month {
+    margin-bottom: 32px;
+    > .title {
+      font-size: 21px;
+      line-height: 30px;
+    }
+    > .menu { margin-bottom: 0; }
+    &:last-child { margin-bottom: 70px; }
   }
   > .menu {
     margin-bottom: 70px;
@@ -39,7 +49,7 @@
     }
   }
   &:last-child {
-    > .menu {
+    > .menu, > .archive-month:last-child {
       margin-bottom: 0;
     }
   }

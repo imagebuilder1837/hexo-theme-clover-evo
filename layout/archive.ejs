@@ -1,3 +1,7 @@
 <h1 class="visually-hidden"><%= clover_page_title() %></h1>
-<%- partial('_partial/grouped-posts', { groups: clover_browse_groups('archive') }) %>
+<% if (page.year) { %>
+  <%- partial('_partial/card-list', { posts: page.posts, card_context: 'archive' }) %>
+<% } else { %>
+  <%- partial('_partial/grouped-posts', { groups: clover_browse_groups('archive') }) %>
+<% } %>
 <%- partial('_partial/pagination') %>

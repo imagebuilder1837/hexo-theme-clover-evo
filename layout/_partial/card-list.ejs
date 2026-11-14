@@ -1,4 +1,4 @@
-<% const style = (theme.card_style || {})[card_context] || (card_context === 'home' ? 'project-card' : 'article-card');
+<% const style = card_context === 'archive' ? 'article-card' : (theme.card_style || {})[card_context] || (card_context === 'home' ? 'project-card' : 'article-card');
 if (!['project-card', 'article-card'].includes(style)) throw new Error('Unsupported Clover Evo card style: ' + style);
 let imageIndex = 0;
 posts.each(function (post) { %>

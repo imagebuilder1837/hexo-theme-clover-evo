@@ -10,7 +10,7 @@
     </div>
     <div class="menu">
       <% menu_links().forEach(function(item) { %>
-        <a href="<%= url_for(item.path) %>" class="nav-menu <%= is_current(item.path) ? 'z-active' : '' %>"><%= item.key.toUpperCase() %></a>
+        <a href="<%= url_for(item.path) %>" class="nav-menu <%= (item.path === '/' ? is_home() : is_current(item.path)) ? 'z-active' : '' %>"><%= item.key.toUpperCase() %></a>
       <% }); %>
     </div>
   </div>
