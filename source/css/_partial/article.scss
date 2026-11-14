@@ -1,6 +1,5 @@
 @use '../layout';
-
-$brand-color: #f0534e;
+@use '../colors';
 
 // Keep local CJK faces from supplying proportional Latin glyphs in code.
 @font-face {
@@ -117,9 +116,9 @@ body[data-layout="about"] .article {
       }
     }
     a {
-      color: $brand-color;
+      color: colors.$brand-color;
       &:hover {
-        color: rgba($brand-color, 0.7);
+        color: rgba(colors.$brand-color, 0.7);
       }
     }
 

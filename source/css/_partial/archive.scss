@@ -1,4 +1,5 @@
 @use '../layout';
+@use '../colors';
 
 .archive {
   padding: 64px layout.$overview-inset;
@@ -26,7 +27,7 @@
       line-height: 24px;
       > a {
         &:hover {
-          color: #f0534e;
+          color: colors.$brand-color;
         }
       }
       > span {

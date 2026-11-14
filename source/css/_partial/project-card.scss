@@ -1,4 +1,5 @@
 @use '../layout';
+@use '../colors';
 
 // Taxonomy lists share the overview pages' insets; home cards remain denser.
 body[data-layout="category"], body[data-layout="tag"] {
@@ -38,7 +39,7 @@ body[data-layout="home"] .project-card > .ctnWrap > :last-child {
       font-size: 28px;
       line-height: 40px;
       &:hover {
-        color: #f0534e;
+        color: colors.$brand-color;
       }
     }
     > .desc {

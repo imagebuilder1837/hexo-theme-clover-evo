@@ -1,4 +1,6 @@
+@use 'sass:color';
 @use '../layout';
+@use '../colors';
 
 .tagcloud {
   background-color: white;
@@ -7,6 +9,11 @@
   > a {
     display: inline-block;
     padding: 10px;
-    &:hover { opacity: .7; }
+    @for $level from 0 through 10 {
+      &.tag-weight-#{$level}:hover, &.tag-weight-#{$level}:focus-visible {
+        // Override only the helper's inline color; preserve its resting gray and font size.
+        color: color.mix(colors.$brand-color, #f58783, $level * 10%) !important;
+      }
+    }
   }
 }
