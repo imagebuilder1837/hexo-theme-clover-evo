@@ -64,29 +64,17 @@ function absolute(value, config) {
   return ['https:', 'http:'].includes(url.protocol) ? url.href : undefined;
 }
 
-function images(page, config) {
-  const values = Array.isArray(page.photos) ? page.photos : page.photos ? [page.photos] : [];
-  return values.map((value, index) => {
-    try {
-      return absolute(value, config);
-    } catch (error) {
-      throw new Error(`${page.source || page.path || page.title}: photos[${index}]: ${error.message}`, { cause: error });
-    }
-  }).filter(Boolean);
+function optionalUrl(value, config) {
+  try {
+    return absolute(value, config);
+  } catch {
+    return undefined;
+  }
 }
 
-function source(page, config) {
-  const value = page.source_url;
-  if (value === undefined || value === null || value === '') return undefined;
-  try {
-    const url = absolute(value, config);
-    if (typeof value !== 'string' || (value.trim() && !url)) {
-      throw new Error('expected an HTTP(S) or relative URL');
-    }
-    return url;
-  } catch (error) {
-    throw new Error(`${page.source || page.path || page.title}: source_url: ${error.message}`, { cause: error });
-  }
+function images(page, config) {
+  const values = Array.isArray(page.photos) ? page.photos : page.photos ? [page.photos] : [];
+  return values.map(value => optionalUrl(value, config)).filter(Boolean);
 }
 
 function iso(value) {
@@ -123,7 +111,7 @@ function resolve(page, config, article) {
     author: article ? author(page, config) : undefined,
     images: images(page, config),
     ...(article ? dates(page) : {}),
-    source: article ? source(page, config) : undefined
+    source: article ? optionalUrl(page.source_url, config) : undefined
   };
 }
 

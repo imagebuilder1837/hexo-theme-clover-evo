@@ -2,5 +2,8 @@
   <% social_links().forEach(function(item, index) { %>
     <% if (index > 0) { %>· <% } %><a href="<%= url_for(item.url) %>" target="_blank" class="nav-icn"><%= item.key %></a>
   <% }); %>
-  <span class="copyright"><%- theme.copyright %></span>
+  <% const license = clover_license(); %>
+  <% if (license !== false) { %>
+    <span class="copyright"><% if (license) { %>Original content uses <a href="<%= url_for(license.url) %>"><%= license.name %></a> unless otherwise noted.<% } else { %>All rights to original content are reserved.<% } %></span>
+  <% } %>
 </footer>

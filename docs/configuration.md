@@ -17,13 +17,19 @@ theme: clover-evo
 theme_config:
   nav:
     title: 我的博客
-  copyright: 我的版权说明
+  license:
+    name: CC BY 4.0
+    url: https://creativecommons.org/licenses/by/4.0/
   social:
     GitHub: https://github.com/your-name
     Mail: mailto:me@example.com
 ```
 
-`title` 是站点标题，`theme_config.nav.title` 是主题导航标题。主题默认值中的版权文字和社交链接只是示例，应替换或清空。
+`title` 是站点标题，`theme_config.nav.title` 是主题导航标题。主题默认值中的社交链接只是示例，应替换或清空。
+
+`theme_config.license` 控制所有页面一致的站点许可声明，范围限定为本站原创内容。设置 `name` 和 `url` 后，页脚显示英文句子“Original content uses [许可名称] unless otherwise noted.”，其中许可名称链接到 `url`。名称按纯文本输出，链接与导航一样通过 Hexo `url_for` 处理，支持外部地址及站内路径。
+
+省略或留空 `license` 时显示“All rights to original content are reserved.”；设为 `false` 时隐藏声明。填写对象时，`name`、`url` 均须为非空字符串，否则生成失败。许可声明独立于文章署名和来源；单篇的例外许可可在内容中说明。
 
 子路径部署时，`url` 应包含子路径，`root` 与其一致。`favicon` 和 `background.image` 的本地地址按站点 root 解析，完整外部 URL 保持外部地址。
 

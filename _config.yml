@@ -13,8 +13,8 @@ background:
 social:
   GitHub: https://example.com/github
 
-# Custom footer
-copyright: Example site by <a href="https://example.com/author">Example Author</a> · <a href="https://example.com/terms">Example Terms</a>
+# Original-content license; empty reserves all rights, false hides the notice.
+license:
 
 # Custom menu
 menu:
