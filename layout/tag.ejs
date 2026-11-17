@@ -1,8 +1,8 @@
 <h1 class="visually-hidden"><%= clover_page_title() %></h1>
-<% if (page.tag) { %>
-  <%- partial('_partial/card-list', { posts: page.posts, card_context: 'tag' }) %>
-  <%- partial('_partial/pagination') %>
-<% } else { %>
+<% if (page.tag) { -%>
+  <%- partial('_partial/card-list', { posts: page.posts, card_context: 'tag' }) -%>
+  <%- partial('_partial/pagination') -%>
+<% } else { -%>
   <section class="tagcloud">
     <%- tagcloud({
       min_font: 12, 
@@ -15,4 +15,4 @@
       level: 10,
     }) %>
   </section>
-<% } %>
+<% } -%>

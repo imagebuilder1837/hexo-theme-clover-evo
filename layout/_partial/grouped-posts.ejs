@@ -1,23 +1,23 @@
 <section class="archive">
-  <% groups.forEach(function (group) { %>
+<% groups.forEach(function (group) { -%>
     <section class="archive-category">
       <h2 class="title">
-        <% if (group.path) { %>
+<% if (group.path) { -%>
           <a href="<%= url_for(group.path) %>"><%= clover_title(group.title) %></a>
-        <% } else { %>
+<% } else { -%>
           <%= clover_title(group.title) %>
-        <% } %>
+<% } -%>
       </h2>
-      <% if (group.months.length) { %>
-        <% group.months.forEach(function (month) { %>
+<% if (group.months.length) { -%>
+<% group.months.forEach(function (month) { -%>
           <section class="archive-category archive-month">
             <h3 class="title"><a href="<%= url_for(month.path) %>"><%= month.title %></a></h3>
-            <%- partial('post-links', { posts: month.posts }) %>
+            <%- partial('post-links', { posts: month.posts }) -%>
           </section>
-        <% }); %>
-      <% } else { %>
-        <%- partial('post-links', { posts: group.posts }) %>
-      <% } %>
+<% }); -%>
+<% } else { -%>
+        <%- partial('post-links', { posts: group.posts }) -%>
+<% } -%>
     </section>
-  <% }); %>
+<% }); -%>
 </section>

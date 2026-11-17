@@ -4,14 +4,14 @@
   </header>
   <div class="ctnWrap">
     <div class="icons">
-      <% social_links().forEach(function(item) { %>
+<% social_links().forEach(function(item) { -%>
         <a href="<%= url_for(item.url) %>" target="_blank" aria-label="<%= item.key %>" class="nav-icn iconfont icon-<%= item.key.toLowerCase() %>"></a>
-      <% }); %>
+<% }); -%>
     </div>
     <div class="menu">
-      <% menu_links().forEach(function(item) { %>
+<% menu_links().forEach(function(item) { -%>
         <a href="<%= url_for(item.path) %>" class="nav-menu <%= (item.path === '/' ? is_home() : is_current(item.path)) ? 'z-active' : '' %>"><%= item.key.toUpperCase() %></a>
-      <% }); %>
+<% }); -%>
     </div>
   </div>
 </nav>
