@@ -1,9 +1,9 @@
 <footer id="footer" class="f-cf">
-<% social_links().forEach(function(item, index) { -%>
+  <%_ social_links().forEach(function(item, index) { _%>
     <% if (index > 0) { %>· <% } %><a href="<%= url_for(item.url) %>" target="_blank" class="nav-icn"><%= item.key %></a>
-<% }); -%>
-<% const license = clover_license(); -%>
-<% if (license !== false) { -%>
+  <%_ }); _%>
+  <%_ const license = clover_license(); _%>
+  <%_ if (license !== false) { _%>
     <span class="copyright"><% if (license) { %>Original content uses <a href="<%= url_for(license.url) %>"><%= license.name %></a> unless otherwise noted.<% } else { %>All rights to original content are reserved.<% } %></span>
-<% } -%>
+  <%_ } _%>
 </footer>

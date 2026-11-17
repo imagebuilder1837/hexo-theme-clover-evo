@@ -1,2 +1,2 @@
-<% const timestamps = clover_post_dates(post); -%>
+<%_ const timestamps = clover_post_dates(post); _%>
 <span title="<%= __('published') %>"><%= date(timestamps.published, 'YYYY-MM-DD') %></span><% if (timestamps.modified) { %>&ensp;<span class="iconfont icon-arrow-right" aria-hidden="true"></span>&ensp;<span title="<%= __('updated') %>"><%= date(timestamps.modified, 'YYYY-MM-DD') %></span><% } %>

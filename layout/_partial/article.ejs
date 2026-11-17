@@ -1,18 +1,18 @@
 <section class="article article-post">
-<% if (post.cover !== false && post.photos && post.photos[0]) { -%>
+  <%_ if (post.cover !== false && post.photos && post.photos[0]) { _%>
     <img class="cover" src="<%= url_for(post.photos[0]) %>" alt="" <%- clover_card_image_attrs(post.photos[0]) %> loading="eager" />
-<% } -%>
+  <%_ } _%>
   <h1 class="title"><%= clover_title(post.title) %></h1>
   <p class="sub"><%- partial('post-date', { post: post }) %></p>
   <article class="content">
     <%- clover_body_images(post.more, post.path) -%>
   </article>
   <footer class="f-cf">
-<% if (post.prev) { -%>
+    <%_ if (post.prev) { _%>
       <a href="<%- url_for(post.prev.path) %>" class="link f-fl"><span class="footer-icn iconfont icon-arrow-left"></span><%= clover_title(post.prev.title) %></a>
-<% } -%>
-<% if (post.next) { -%>
+    <%_ } _%>
+    <%_ if (post.next) { _%>
       <a href="<%- url_for(post.next.path) %>" class="link f-fr"><%= clover_title(post.next.title) %><span class="footer-icn iconfont icon-arrow-right"></span></a>
-<% } -%>
+    <%_ } _%>
   </footer>
 </section>

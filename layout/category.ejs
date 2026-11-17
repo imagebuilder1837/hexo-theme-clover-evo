@@ -1,7 +1,7 @@
 <h1 class="visually-hidden"><%= clover_page_title() %></h1>
-<% if (page.category) { -%>
+<%_ if (page.category) { _%>
   <%- partial('_partial/card-list', { posts: page.posts, card_context: 'category' }) -%>
-<% } else { -%>
+<%_ } else { _%>
   <%- partial('_partial/grouped-posts', { groups: clover_browse_groups('category') }) -%>
-<% } -%>
+<%_ } _%>
 <%- partial('_partial/pagination') -%>

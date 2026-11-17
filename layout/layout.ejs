@@ -1,13 +1,13 @@
 <%- partial('_partial/head') -%>
-<% const layout = is_home() ? 'home' : is_post() ? 'post' : is_category() ? 'category' : is_tag() ? 'tag' : is_archive() ? 'archive' : page.layout || 'page'; -%>
+<%_ const layout = is_home() ? 'home' : is_post() ? 'post' : is_category() ? 'category' : is_tag() ? 'tag' : is_archive() ? 'archive' : page.layout || 'page'; _%>
 <body data-layout="<%= layout %>" style="
-<% if (theme.background.image) { -%>
+<%_ if (theme.background.image) { _%>
   background: url(<%= url_for(theme.background.image) %>) center center no-repeat;
   background-size: contain;
-<% } -%>
-<% if (theme.background.color) { -%>
+<%_ } _%>
+<%_ if (theme.background.color) { _%>
   background-color: <%= theme.background.color %>
-<% } -%>
+<%_ } _%>
 ">
   <div id="container">
     <%- partial('_partial/nav') -%>

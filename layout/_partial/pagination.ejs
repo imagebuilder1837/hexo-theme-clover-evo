@@ -1,4 +1,4 @@
-<% if (page.prev || page.next) { -%>
+<%_ if (page.prev || page.next) { _%>
   <nav class="pagination" aria-label="Pagination">
     <%- paginator({
       prev_text: '<span class="iconfont icon-arrow-left" aria-hidden="true"></span><span class="visually-hidden">Previous page</span>',
@@ -6,4 +6,4 @@
       escape: false, // Only fixed, theme-owned arrow markup is passed above.
     }) %>
   </nav>
-<% } -%>
+<%_ } _%>

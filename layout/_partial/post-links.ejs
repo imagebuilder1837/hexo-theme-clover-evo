@@ -1,8 +1,8 @@
 <ul class="menu">
-<% posts.forEach(function (post) { -%>
+  <%_ posts.forEach(function (post) { _%>
     <li>
       <a href="<%- url_for(post.path) %>"><%= clover_title(post.title) %></a>
       <span class="date"><%- date(post.date, 'YYYY-MM-DD') %></span>
     </li>
-<% }); -%>
+  <%_ }); _%>
 </ul>

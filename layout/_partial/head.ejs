@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<% const metadata = clover_metadata(); -%>
+<%_ const metadata = clover_metadata(); _%>
 <html lang="<%= metadata.language %>">
 <head>
   <meta charset="utf-8">
   <title><%= metadata.documentTitle %></title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%- clover_metadata_html(metadata) %>
-<% if (theme.favicon){ -%>
+  <%_ if (theme.favicon){ _%>
     <link rel="icon" href="<%= url_for(theme.favicon) %>">
-<% } -%>
-<% if (theme.code_copy) { -%>
+  <%_ } _%>
+  <%_ if (theme.code_copy) { _%>
     <script src="<%- url_for('js/code-copy.js') %>" defer></script>
-<% } -%>
+  <%_ } _%>
   <%- css('css/index') -%>
 </head>
